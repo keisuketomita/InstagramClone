@@ -1,0 +1,27 @@
+<h2>new post</h2>
+<%= form_with(model: @blog, local: true, url: confirm_blogs_path) do |f| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <%= @blog.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="blog_wrapper">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.label :image %>
+    <%= image_tag(@blog.image.url, class: "image_tag") if @blog.image && @blog.image.url %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <input type="submit" name="commit" value="post" data-disable-with="postin･･･">
+<% end %>
+<div class="btn-wrapper">
+  <button class="btn btn-default">
+    <%= link_to '投稿一覧に戻る', blogs_path %>
+  </button>
+</div>
