@@ -1,0 +1,23 @@
+<h2>ユーザーを編集する</h2>
+<%= form_with(model: @user, local: true, url: user_path ) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="user_title">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :image %>
+    <%= image_tag @user.image.url, class: "image_tag" %>
+    <%= f.file_field :image %>
+  </div>
+  <input type="submit" name="commit" value="edit" data-disable-with="editting･･･">
+<% end %>
