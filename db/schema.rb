@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_11_04_053618) do
-=======
-ActiveRecord::Schema.define(version: 2020_10_22_012508) do
->>>>>>> 9c77ad610cfa9013a53d8359f10ff3285219640f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,10 +28,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_012508) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.index ["email"], name: "index_users_on_email", unique: true
-=======
->>>>>>> 9c77ad610cfa9013a53d8359f10ff3285219640f
   end
 
 end
