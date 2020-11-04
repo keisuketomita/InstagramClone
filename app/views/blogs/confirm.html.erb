@@ -1,0 +1,9 @@
+<h3>以下の内容で投稿する</h3>
+<%= form_with(model: @blog, local: true, url: blogs_path) do |f| %>
+  <%= f.hidden_field :content %>
+  <%= f.hidden_field :image_cache %>
+  <%= @blog.content %>
+  <%= image_tag(@blog.image.url, class: "image_tag") if @blog.image &&@blog.image_url %>
+  <%= f.submit "post" %>
+  <%= f.submit "back", name: "back" %>
+<% end %>
