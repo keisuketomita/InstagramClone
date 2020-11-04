@@ -47,7 +47,10 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+<<<<<<< HEAD
     bcrypt (3.1.11)
+=======
+>>>>>>> 9c77ad610cfa9013a53d8359f10ff3285219640f
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -204,7 +207,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
   bcrypt (= 3.1.11)
+=======
+>>>>>>> 9c77ad610cfa9013a53d8359f10ff3285219640f
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)

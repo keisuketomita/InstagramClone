@@ -27,4 +27,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
 gem 'mini_magick'
+<<<<<<< HEAD
 gem 'bcrypt', '3.1.11'
+=======
+>>>>>>> 9c77ad610cfa9013a53d8359f10ff3285219640f
