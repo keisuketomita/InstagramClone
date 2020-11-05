@@ -1,6 +1,13 @@
 <h1>投稿詳細</h1>
 <%= image_tag(@blog.image.url, class: "image_tag") %>
-<br><%= @blog.content %>
+<br><%= @blog.content %><br>
+<% unless @blog.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
 <% if @blog.user_id == @current_user.id%>
-  <br><%= link_to '編集する', edit_blog_path(@blog.id) %>
+  <%= link_to '編集する', edit_blog_path(@blog.id) %>
 <% end %>

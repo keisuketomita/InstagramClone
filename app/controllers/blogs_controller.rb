@@ -4,6 +4,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user, only: [:index, :new, :edit, :show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
   def index
     @blogs = Blog.all
