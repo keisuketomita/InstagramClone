@@ -7,7 +7,7 @@
       <th>ユーザー</th>
     </tr>
     <tr>
-      <td><%= link_to image_tag(blog.image.url, class: "image_tag"), edit_blog_path(blog.id) %></td>
+      <td><%= link_to image_tag(blog.image.url, class: "image_tag"), blog_path(blog.id) %></td>
       <td><%= link_to blog.user.name,user_path(blog.user.id) %></td>
     </tr>
   <% end %>

@@ -1,7 +1,10 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:edit, :update, :destroy]
-  before_action :logged_in?, only: [:index, :new, :edit]
-  before_action :authenticate_user, only: [:index, :new, :edit]
+  before_action :set_blog, only: [:edit, :update, :destroy, :show]
+  before_action :logged_in?, only: [:index, :new, :edit, :show]
+  before_action :authenticate_user, only: [:index, :new, :edit, :show]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  def show
+  end
   def index
     @blogs = Blog.all
   end
@@ -45,5 +48,10 @@ class BlogsController < ApplicationController
   end
   def set_blog
     @blog = Blog.find(params[:id])
+  end
+  def ensure_correct_user
+    if @blog.user_id != current_user.id
+      redirect_to blogs_path, notice: "権限がありません"
+    end
   end
 end

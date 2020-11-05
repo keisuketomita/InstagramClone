@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :logged_in?, only: [:show, :edit]
   before_action :authenticate_user, only: [:show, :edit]
+  before_action :ensure_correct_user, only: [:edit, :update]
   def new
     @user = User.new
   end
@@ -32,5 +33,10 @@ class UsersController < ApplicationController
   end
   def set_user
     @user = User.find(params[:id])
+  end
+  def ensure_correct_user
+    if @user.id != current_user.id
+      redirect_to blogs_path, notice: "権限がありません"
+    end
   end
 end
