@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :like]
   before_action :logged_in?, only: [:show, :edit]
   before_action :authenticate_user, only: [:show, :edit]
   before_action :ensure_correct_user, only: [:edit, :update]
@@ -26,6 +26,9 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+  def like
+    @favorites = current_user.favorite_blogs
   end
   private
   def user_params

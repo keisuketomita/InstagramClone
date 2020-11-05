@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :users, only: [:new, :create, :show, :edit, :update] do
+    member do
+      get :like
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy, :show]
 end

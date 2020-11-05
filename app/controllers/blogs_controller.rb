@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def show
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @favorite_count = Favorite.where(blog_id: @blog.id).count
   end
   def index
     @blogs = Blog.all
