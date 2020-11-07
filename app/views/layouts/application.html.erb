@@ -8,20 +8,51 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <%= link_to "Blogs", blogs_path %>
-      <%= link_to "Post", new_blog_path %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-    <%= yield %>
+    <nav class="navbar">
+      <div class="container_fluid">
+        <div class="nav navbar-nav navbar-left"">
+          <%= link_to blogs_path do %>
+            <span>
+              <%= image_tag "Instagram_logo.png", class: "header-icon" %>
+            </span>
+          <% end %>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+          <%= link_to blogs_path do %>
+            <span class="material-icons md-36 ">home</span>
+          <% end %>
+          <%= link_to new_blog_path do %>
+            <span class="material-icons md-36">create</span>
+          <% end %>
+          <%= link_to user_path(current_user.id) do %>
+          <span class="material-icons md-36">face</span>
+          <% end %>
+          <%= link_to session_path(current_user.id), method: :delete do %>
+            <span class="material-icons md-36">exit_to_app</span>
+          <% end %>
+          <% else %>
+            <%= link_to new_user_path do %>
+              <span class="material-icons md-36 ">person_add</span>
+            <% end %>
+            <%= link_to new_session_path do %>
+              <span class="material-icons md-36 ">login</span>
+            <% end %>
+
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="notice">
+        <% flash.each do |key, value| %>
+        <p><%= content_tag(:div, value, class: "#{key}") %></p>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

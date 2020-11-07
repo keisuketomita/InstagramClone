@@ -1,13 +1,8 @@
-<h1>お気に入り一覧</h1>
-<table class="center-block">
-  <% @favorites.each do |blog| %>
-    <tr>
-      <th>投稿画像</th>
-      <th>ユーザー</th>
-    </tr>
-    <tr>
-      <td><%= image_tag(blog.image.url, class: "image_tag") %></td>
-      <td><%= blog.user.name %></td>
-    </tr>
-  <% end %>
-</table>
+<% @favorites.each do |blog| %>
+　<div>
+    <%= link_to "#{blog.user.name}さんの投稿", user_path(blog.user.id), class:"user_link" %>
+  </div>
+  <div>
+    <%= link_to image_tag(blog.image.url, class: "image_tag image_favorite"), blog_path(blog.id) %>
+  </div>
+<% end %>

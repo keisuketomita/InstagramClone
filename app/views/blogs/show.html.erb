@@ -1,24 +1,26 @@
-<h1>投稿詳細</h1>
-<%= image_tag(@blog.image.url, class: "image_tag") %>
-<br><%= @blog.content %><br>
+<div class="blog_container clearfix">
+  <%= link_to "#{@blog.user.name}さんの投稿", user_path(@blog.user.id), class: "user_link" %><br>
+  <%= image_tag(@blog.image.url, class: "image_tag image_show") %><br>
+  <p class ="comment left">コメント：<%= @blog.content %></p>
+    <% if @blog.user_id == @current_user.id%>
+      <%= link_to '投稿を編集', edit_blog_path(@blog.id), class: "right btn btn-outline-warning" %>
+    <% end %>
+</div>
 <% unless @blog.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
-      <span class="fa fa-heart unfavorite-btn"></span>
+      <span class="fa fa-heart unfavorite-btn fa-2x"></span>
     <% end %>
   <% else %>
     <%= link_to favorites_path(blog_id: @blog.id), method: :post do %>
-      <span class="fa fa-heart favorite-btn"></span>
+      <span class="fa fa-heart favorite-btn fa-2x"></span>
     <% end %>
   <% end %>
 <% else %>
   <% if @favorite_count == 0 %>
-    <span class="fa fa-heart favorite-btn"></span>
+    <span class="fa fa-heart favorite-btn fa-2x"></span>
   <% else %>
-    <span class="fa fa-heart unfavorite-btn"></span>
+    <span class="fa fa-heart unfavorite-btn fa-2x"></span>
   <% end %>
 <% end %>
-<%= @favorite_count %>
-<% if @blog.user_id == @current_user.id%>
-  <%= link_to '編集する', edit_blog_path(@blog.id) %>
-<% end %>
+<span class="favorite_count"><%= @favorite_count%></span>
