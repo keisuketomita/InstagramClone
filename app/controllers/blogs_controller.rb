@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
       render :new
     else
       if @blog.save
-        redirect_to blogs_path, notice:"ブログを投稿しました"
+        redirect_to blogs_path, notice:"新規投稿しました"
         ContactMailer.contact_mail(@blog).deliver
       else
         render :new
@@ -36,14 +36,14 @@ class BlogsController < ApplicationController
   end
   def update
     if @blog.update(blog_params)
-      redirect_to blogs_path, notice: "ブログを編集しました"
+      redirect_to blogs_path, notice: "投稿を編集しました"
     else
       render :edit
     end
   end
   def destroy
     @blog.destroy
-    redirect_to blogs_path
+    redirect_to blogs_path, notice: "投稿を削除しました"
   end
   private
   def blog_params

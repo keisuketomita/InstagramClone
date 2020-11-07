@@ -1,9 +1,8 @@
-<h3>以下の内容で投稿する</h3>
 <%= form_with(model: @blog, local: true, url: blogs_path) do |f| %>
   <%= f.hidden_field :content %>
   <%= f.hidden_field :image_cache %>
-  <%= @blog.content %>
   <%= image_tag(@blog.image.url, class: "image_tag") if @blog.image &&@blog.image_url %>
-  <%= f.submit "post" %>
-  <%= f.submit "back", name: "back" %>
+  <p class ="comment">コメント：<%= @blog.content %></p>
+  <%= f.submit "新規投稿", name: "commit", data: {disable_with:"editting･･･"}, class: "btn btn-outline-primary" %>
+  <%= f.submit "戻る", name: "back", data: {disable_with:"backing･･･"}, class: "btn btn-outline-secondary"  %>
 <% end %>

@@ -42,26 +42,54 @@
 .btn:hover {
   text-decoration: none;
 }
-.btn-outline-primary {
-  color: #808080;
-  border: solid 1px #808080;
+.btn-outline-secondary {
+  color: #6c757d;
+  border: solid 1px #6c757d;
   padding: 4px 20px;
 }
-.btn-outline-primary:hover {
+.btn-outline-secondary:hover {
   color: #fff;
-  background-color: #808080;
-  border-color: #808080;
+  background-color: #6c757d;
+  border-color: #6c757d;
 }
 .btn-outline-warning {
   color: #FF9900;
   border: solid 1px #FF9900;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .btn-outline-warning:hover {
   color: #fff;
   background-color: #FF9900;
   border-color: #FF9900;
+}.btn-outline-primary {
+  color: #007bff;
+  border: solid 1px #007bff;
+  background-color: #fff;
 }
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-outline-success {
+  color: #28a745;
+  border: solid 1px #28a745;
+  background-color: #fff;
+  padding: 4px 20px;
+}
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn-danger {
+  color: #fff;
+}
+.btn-danger:hover {
+  color: #ff0000;
+  background-color: #fff;
+}
+
 
 .image_favorite {
   margin-bottom: 20px;

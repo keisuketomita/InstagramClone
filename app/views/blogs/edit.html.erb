@@ -1,4 +1,3 @@
-<h2>投稿を編集する</h2>
 <%= form_with(model: @blog, local: true, url: blog_path ) do |f| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
@@ -10,18 +9,12 @@
       </ul>
     </div>
   <% end %>
-  <div class="blog_title">
-    <%= f.label :コメント %>
-    <br><%= f.text_area :content %><br>
-    <br><%= f.label :投稿画像 %>
-    <br><%= image_tag @blog.image.url, class: "image_tag" %>
-    <br><%= f.file_field :image %>
+  <div class="blog_wrapper">
+    <%= image_tag @blog.image.url, class: "image_tag" %>
+    <%= f.file_field :image %>
+    <%= f.text_area :content, class: "content_area"%>
   </div>
-  <input type="submit" name="commit" value="edit" data-disable-with="editting･･･">
+  <%= f.submit "投稿を編集", name: "commit", data: {disable_with:"editting･･･"}, class: "btn btn-outline-warning" %>
+  <%= link_to '投稿を削除', blog_path(@blog.id), method: "delete" ,class: "btn btn-danger",
+  data: { confirm: '本当に削除していいですか？' } %>
 <% end %>
-<div class="btn-wrapper">
-  <button class="btn btn-warning">
-    <%= link_to '投稿を削除する', blog_path(@blog.id), method: :delete ,
-    data: { confirm: '本当に削除していいですか？' } %>
-  </button>
-</div>

@@ -8,6 +8,6 @@
     <% if @user.id == @current_user.id%>
     <p><%= link_to 'プロフィールを編集', edit_user_path(@user.id), class: "btn btn-outline-warning" %></p>
     <% end %>
-    <p><%= link_to 'お気に入り一覧', like_user_path(@user.id), class: "btn btn-outline-primary" %></p>
+    <p><%= link_to 'お気に入り一覧', like_user_path(@user.id), class: "btn btn-outline-success" %></p>
   </div>
 </div>

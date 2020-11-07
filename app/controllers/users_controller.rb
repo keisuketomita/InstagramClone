@@ -28,7 +28,8 @@ class UsersController < ApplicationController
     end
   end
   def like
-    @favorites = current_user.favorite_blogs
+    # @favorites = current_user.favorite_blogs
+    @favorites = @user.favorite_blogs
   end
   private
   def user_params
