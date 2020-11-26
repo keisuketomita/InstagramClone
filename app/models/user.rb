@@ -9,4 +9,16 @@ class User < ApplicationRecord
   has_many :blogs
   has_many :favorites, dependent: :destroy
   has_many :favorite_blogs, through: :favorites, source: :blog
+
+  before_update :admin_change_check
+  before_destroy :admin_change_check
+
+
+  def admin_change_check
+    target = User.find_by(id: self.id)
+    if current_user.admin && current_user == target
+      throw :abort
+    end
+  end
+
 end
